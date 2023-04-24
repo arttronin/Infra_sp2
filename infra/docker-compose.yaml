@@ -6,6 +6,7 @@ version: '3.8'
 services:
   db:
     image: postgres:13.0-alpine
+    container_name: db
     volumes:
       - /var/lib/postgresql/data/
     # адрес файла, где хранятся переменные окружения
@@ -13,6 +14,7 @@ services:
       - ./.env
   web:
     build: ../api_yamdb/
+    container_name: web
     restart: always
     volumes:
       # Контейнер web будет работать с данными, хранящиеся в томе static_value, 
