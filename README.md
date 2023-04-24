@@ -32,31 +32,39 @@ YaMDB отправляет письмо с кодом подтверждения
 git clone git@github.com:arttronin/infra_sp2.git
 ```
 Заполнить infra/.env по шаблону:
+```
 DB_ENGINE=django.db.backends.postgresql
 DB_NAME=postgres
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres
 DB_HOST=db
 DB_PORT=5432
+```
 Сборка и запуск контейнеров:
-
+```
 cd infra_sp2/infra
 docker-compose up
+```
 Миграции:
-
+```
 docker-compose exec web python manage.py migrate
+```
 Заполенение проекта демо данными:
-
+```
 docker-compose exec web python manage.py db_import
+```
 Или загрузка демо данных из фикстур:
-
+```
 docker-compose exec web python manage.py loaddata data/fixtures.json
+```
 Создание суперпользователя:
-
+```
 docker-compose exec web python manage.py createsuperuser
+```
 Сборка стат. файлов:
-
+```
 docker-compose exec web python manage.py collectstatic --no-input
+```
 После этого можно перейти на http://127.0.0.1:80/admin/
 ```
 
